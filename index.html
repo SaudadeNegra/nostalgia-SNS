@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saudade Negra Subs</title>
+  <title>Nostalgia - SNS</title>
   <link rel="icon" type="image/png" href="assetsN/favicon.png" />
 
   <!-- Cloudflare Web Analytics -->
@@ -46,30 +46,14 @@
       background-color: var(--bg);
     }
 
-	body::after {
-	  content: "";
-	  position: fixed;
-	  inset: 0;
-	  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-	  opacity: 0.12;
-	  pointer-events: none;
-	  z-index: 1;
-	}
-	
-	body::before {
-	  content: "";
-	  position: fixed;
-	  inset: 0;
-	  background: repeating-linear-gradient(
-	    to bottom,
-	    rgba(255,255,255,0.04),
-	    rgba(255,255,255,0.04) 1px,
-	    transparent 1px,
-	    transparent 3px
-	  );
-	  pointer-events: none;
-	  z-index: 1;
-	}
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.14);
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .page {
       position: relative;
@@ -109,6 +93,62 @@
 
     .banner-content {
       padding: 18px 22px 24px;
+    }
+	.about-banner {
+	  position: relative;
+	}
+	.about-banner:hover .banner-about {
+	  opacity: 1;
+    }
+	
+	.about-banner:hover .banner-about-scroll {
+      animation: scrollAbout 12s linear forwards;
+    }
+
+    @keyframes scrollAbout {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+	
+    .banner-about {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      padding: 0
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.92));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .about-banner:hover .banner-about {
+      opacity: 1;
+    }
+
+    .banner-about-scroll {
+      position: absolute;
+	  top: 50%;
+      left: 18px;
+      right: 6px;
+	  transform: translateY(0);
+    }
+
+    .banner-about-text {
+      margin: 0 0 10px;
+      color: #ececec;
+      line-height: 1.55;
+      font-size: 0.95rem;
+      width: 100%;
+      max-width: none;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .banner-about-text:last-child {
+      margin-bottom: 0;
     }
 
     .title {
@@ -379,6 +419,75 @@
     .green { color: var(--green); }
     .yellow { color: var(--yellow); }
     .red { color: var(--red); }
+	
+	.nostalgia-cta-logo {
+	  display: block;
+	  max-height: 72px;
+	  width: auto;
+	  margin: 12px auto;
+	}
+	
+	.nostalgia-cta {
+	  display: block;
+  	  width: min(900px, 100%);
+  	  margin: 8px auto 0;
+  	  min-height: 50px;
+  	  border-radius: 24px;
+  	  overflow: hidden;
+  	  text-decoration: none;
+  	  position: relative;
+  	  border: 1px solid rgba(255, 190, 210, 0.16);
+  	  box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(255, 150, 190, 0.18),
+        0 0 34px rgba(255, 120, 170, 0.12);
+  	  background:
+        linear-gradient(rgba(16, 10, 18, 0.42), rgba(16, 10, 18, 0.58)),
+	  url('assetsN/sns-background.jpg') center center / cover no-repeat;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+	}
+
+	.nostalgia-cta:hover {
+  	  transform: translateY(-2px);
+  	  box-shadow:
+        0 18px 46px rgba(0, 0, 0, 0.5),
+        0 0 24px rgba(255, 170, 205, 0.24),
+        0 0 42px rgba(255, 125, 180, 0.16);
+  	  filter: brightness(1.03);
+	}
+	
+	.nostalgia-cta-content {
+	  min-height: 50px;
+  	  display: flex;
+  	  flex-direction: column;
+  	  justify-content: center;
+  	  align-items: center;
+  	  gap: 0;
+  	  padding: 4px 12px;
+  	  text-align: center;
+	}
+
+	.nostalgia-cta-content img {
+  	  display: block;
+  	  max-height: 38px;
+  	  width: auto;
+	}
+
+	.nostalgia-cta-title {
+  	  font-size: 2rem;
+  	  line-height: 1;
+  	  font-weight: bold;
+  	  color: #f6c7d7;
+  	  text-shadow:
+        0 0 10px rgba(255, 185, 210, 0.22),
+        0 0 22px rgba(255, 150, 190, 0.12);
+    }
+
+	.nostalgia-cta-subtitle {
+	  font-size: 1rem;
+  	  color: #f3e5ed;
+  	  letter-spacing: 0.02em;
+	}
 
     @media (max-width: 720px) {
       .page {
@@ -405,22 +514,40 @@
 <body>
   <main class="page">
     <section class="hero">
-      <div class="banner">
-        <img src="assetsN/banner.png" alt="Banner da Saudade Negra Subs" />
+	  <div class="banner about-banner">
+	    <img src="assetsN/banner.jpg" alt="Banner da Nostalgia" />
+        <div class="banner-about">
+		  <div class="banner-about-scroll">
+            <h3 class="banner-about-title">Sobre nós</h3>
+            <p class="banner-about-text">
+            O <strong>Nostalgia</strong> é uma ramificação da Saudade Negra Subs dedicada a obras que vivem da memória, do estilo e do peso dos anos 80 e 90. Um espaço para clássicos, OVAs e séries que nos marcaram, preservadas com o mesmo cuidado, mas com uma identidade mais retro e melancólica.
+            </p>
+		  </div>
+		</div>
       </div>
-        <div class="telegram-content hidden-project">
-          <a class="telegram-link" href="https://t.me/SaudadeNegra" target="_blank" rel="noopener noreferrer">Entrar no grupo do Telegram</a>
+	  <a href="https://saudadenegra.pt" target="_blank" rel="noopener noreferrer" class="nostalgia-cta">
+	    <div class="nostalgia-cta-content">
+		  <img src="assetsN/sns-logo.png" alt="Banner da Saudade Negra Subs" />
         </div>
-      <div class="legend hidden-project" aria-label="Legenda do estado dos projectos">
+      </a>
+	  
+	  
+      <!--<div class="telegram-content">
+	    <a href="https://t.me/SaudadeNegra" target="_blank" rel="noopener noreferrer" class="nostalgia-cta">
+		<img src="assetsN/nostalgia-logo.png" alt="Nostalgia" class="nostalgia-cta-logo" />
+		</a>-->
+          <!--<a class="telegram-link" href="https://t.me/SaudadeNegra" target="_blank" rel="noopener noreferrer">Entrar no grupo do Telegram</a>
+      </div>-->
+     <!-- <div class="legend hidden-project" aria-label="Legenda do estado dos projectos">
         <span class="legend-item"><span class="legend-dot green"></span> Completo</span>
         <span class="legend-item"><span class="legend-dot yellow"></span> Em andamento</span>
         <span class="legend-item"><span class="legend-dot red"></span> Cancelado</span>
-      </div>
+      </div>-->
     </section>
 
     <section class="projects">
       <article class="project-card status-completo">
-        <img src="assetsN/gunsmith-cats.jpg" alt="Capa de Gunsmith Cats" />
+        <img src="assetsN/gunsmith-cats.jpg" alt="Gunsmith Cats" />
         <span class="status-badge">Completo</span>
         <div class="card-footer">
           <h2 class="card-title">Gunsmith Cats</h2>
@@ -433,6 +560,24 @@
             <span class="overlay-pill">Total: 3</span>
 			<span class="overlay-pill"><a href="https://1fichier.com/dir/xW5iaXCX" target="_blank" rel="noopener noreferrer" title="Podes continuar através do 1fichier."><img src="assetsN/1fichier.png" alt="1fichier" /></a></span>
 			<span class="overlay-pill"><a href="https://t.me/SaudadeNegra/11/12" target="_blank" rel="noopener noreferrer" title="Podes continuar através do Telegram."><img src="assetsN/telegram.png" alt="telegram" /></a></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card status-andamento hidden-project">
+        <img src="assetsN/shigurui.jpg" alt="Capa de Shigurui: Death Frenzy" />
+        <span class="status-badge">Em andamento</span>
+        <div class="card-footer">
+          <h2 class="card-title">Shigurui: Death Frenzy</h2>
+        </div>
+        <div class="card-overlay">
+          <h3 class="overlay-title">Shigurui: Death Frenzy</h3>
+          <p class="overlay-synopsis">Japão feudal e começa com um torneio ordenado por Tokugawa Tadanaga, onde, ao contrário do habitual, os combates são feitos com espadas reais.
+            Fujiki Gennosuke, um espadachim sem um braço, e Irako Seigen, um samurai cego, ambos ligados à escola de Iwamoto Kogan.
+            A série recua depois no tempo para mostrar como os dois chegaram àquele confronto, num ambiente marcado por violência extrema, obsessão, honra deformada e decadência moral.</p>
+          <div class="overlay-meta">
+            <span class="overlay-pill">Lançados: 0</span>
+            <span class="overlay-pill">Total: 12</span>
           </div>
         </div>
       </article>
