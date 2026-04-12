@@ -45,22 +45,47 @@
         url('assetsN/background.jpg') center center / cover no-repeat fixed;
       background-color: var(--bg);
     }
-
-    body::after {
+	body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.14);
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.035),
+        rgba(255, 255, 255, 0.035) 1px,
+        transparent 1px,
+        transparent 3px
+      );
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
+    }
+
+   body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.18)),
+        radial-gradient(rgba(255, 255, 255, 0.03), transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+      opacity: 0.22;
     }
 
     .page {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: min(1280px, calc(100% - 48px));
       margin: 0 auto;
       padding: 28px 0 60px;
+    }
+	  
+	.site-scale {
+      transform: scale(0.9);
+      transform-origin: top center;
+      width: 125%;
+      margin-left: -12.5%;
     }
 
     .hero {
@@ -512,6 +537,7 @@
   </style>
 </head>
 <body>
+<div class="site-scale">
   <main class="page">
     <section class="hero">
 	  <div class="banner about-banner">
@@ -620,5 +646,6 @@
       <p style="margin-top: 10px; font-size: 0.9rem; color: #a9a9a9;">© 2026 Saudade Negra Subs. Todos os direitos reservados.</p>
     </section>
   </main>
+</div>
 </body>
 </html>
